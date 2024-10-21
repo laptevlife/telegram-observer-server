@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int      @id @default(autoincrement())
+  userId        BigInt   @unique
+  isBot         Boolean
+  firstName     String
+  lastName      String
+  userName      String
+  languageCode  String
+  chats         Chat[]   @relation("UserChats")
+  keywords      Keyword[] @relation("UserKeywords") // Связь с ключевыми словами
+}
+
+model Chat {
+  id                Int      @id @default(autoincrement())
+  chatId            String   @unique // Добавлено уникальное ограничение
+  className         String
+  accessHash        String
+  title             String
+  username          String
+  participantsCount Int
+  date              Int
+  users             User[]   @relation("UserChats")
+  keywords          Keyword[] @relation("ChatKeywords") // Связь с ключевыми словами
+}
+
+model Keyword {
+  id        Int    @id @default(autoincrement())
+  keyword   String // Название ключевого слова
+  userId    Int    
+  chatId    Int    
+
+  user      User   @relation("UserKeywords", fields: [userId], references: [id], onDelete: Cascade)
+  chat      Chat   @relation("ChatKeywords", fields: [chatId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, chatId, keyword]) // Уникальность по пользователю, чату и ключевому слову
+}
