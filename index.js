@@ -145,7 +145,7 @@ console.log('Бот запущен...');
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on ${process.env.CLIENT_URL}:${PORT}`);
 });
 
 // Закрытие соединения с базой данных при завершении работы приложения

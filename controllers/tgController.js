@@ -96,6 +96,8 @@ class TgController {
 
 
   postFindChats = async (req, res, next) => {
+    console.log('findChatsPost', req.body);
+
     try {
       const chatName = req.body.name
       const chatsResult = await this.searchChats(chatName)
@@ -109,6 +111,8 @@ class TgController {
       // return res.json(newResult);
       return res.json(chatsResult);
     } catch (e) {
+      console.log('postFindchats', e);
+
       next(e);
     }
   }
