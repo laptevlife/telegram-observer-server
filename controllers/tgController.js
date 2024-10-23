@@ -18,9 +18,18 @@ const apiId = 19885697;
 const apiHash = "4108b17b21af25870b085739d4eb2b9a";
 // const stringSession = new StringSession(""); // fill this later with the value from session.save()
 // const stringSession = new StringSession("1AgAOMTQ5LjE1NC4xNjcuNTABu3c9bMORcXtR9v3qa782gFYclyMLhyGFfDKorfxHJJmItlrEdVBq3SYfldk+8+r2JSEicWcUA2EizvGmghBGrbbYMO1cbDnQPU5aCc2dgPlZvOlAqhPb3G18+YOxfY08tTIKPxiKkNWZHXZx7dDXkP+kgBaklIRrGoKkebycD7z7WH+sG8BB05e9bXIFN9kuq/tn5FHPzi8uII36nPrn2q4ZD53UwicemtAUXChQgmbucAnB0N1XzTUO7jmOyB1a3mljdnQC7QFyK5y3xylPAI7rTME39uwCA1RwdlaEaoHAKEykVhsmvr9gld1vQxzdqd/0akn/u9nDGH/AXwmI+zw="); // fill this later with the value from session.save()
-// const stringSession = new StringSession("1AgAOMTQ5LjE1NC4xNjcuNDEBu1Bv6LtXADWQFNxw/YBbGu3csPoPKp29kHyd9wrM6tycfiEgn7IDTxy+g+6UgTqtS7uAKhPRdkz7frHRw8RldHePhK9sXi1Z7uKfQfFigrk5v9ayk3+wr0houFI9WA6jVP5LxQ/AZYZem3b7vvHHE9bjIIsCNvrq2knIq8COfESr42wu85/fCAlQsYUSWEUgp7Ct+d3EC+W6a78wfNBrIFiUqEZTnufbmDbQseXu2r3q1mHPnvpWnTcun2zXieBOLc2F/mSNr90HRmNBEaa/L4GZY1qX4Zn4CCbFwrAZzz1SPEOH/AblEB9Re0Xb3NirD+GGIZCsTnvWS3EYQhLK8Bo="); // fill this later with the value from session.save()
 
-const stringSession = new StringSession("");
+//local session
+// const stringSession = new StringSession("1AgAOMTQ5LjE1NC4xNjcuNDEBu1Bv6LtXADWQFNxw/YBbGu3csPoPKp29kHyd9wrM6tycfiEgn7IDTxy+g+6UgTqtS7uAKhPRdkz7frHRw8RldHePhK9sXi1Z7uKfQfFigrk5v9ayk3+wr0houFI9WA6jVP5LxQ/AZYZem3b7vvHHE9bjIIsCNvrq2knIq8COfESr42wu85/fCAlQsYUSWEUgp7Ct+d3EC+W6a78wfNBrIFiUqEZTnufbmDbQseXu2r3q1mHPnvpWnTcun2zXieBOLc2F/mSNr90HRmNBEaa/L4GZY1qX4Zn4CCbFwrAZzz1SPEOH/AblEB9Re0Xb3NirD+GGIZCsTnvWS3EYQhLK8Bo="); // fill this later with the value from session.save()
+//server session
+// const stringSession = new StringSession("1AgAOMTQ5LjE1NC4xNjcuNDEBuwFTwnWXD0Wd8mBwxBI4EOxn7MFUVRkyB7AjivAs6sWrqdgQ6gCF4ZmKVaXllJKI7FuzpfW7aS1y1X0+PU957bx4gJU/ODOQi3vymQcwkV6+dWEr9APG74pX3K+9xF2Wfnmz/FTtz9G03cbZO0FKh2p6HqFmnjdC4ACrPQ4Nk26SQvFqIp5YfEWTk+/00nTObARQrACcAjO9VzCfYJvSnYjCQeLJuGW3JGxzhyjkTSJ2n+Y9l2CGZvan1L4vy5aHQl7WQGRkPa1v4VLYJbvmnqjE5w9jB318RmUjFMIg6QMV8bEr2wFiAw87TFD/h3eOgJJp60sSZBewcBVLxEJCB4U="); // fill this later with the value from session.save()
+
+
+const stringSession = process.env.ENVIRONMENT == 'prod'
+  ? new StringSession("1AgAOMTQ5LjE1NC4xNjcuNDEBuwFTwnWXD0Wd8mBwxBI4EOxn7MFUVRkyB7AjivAs6sWrqdgQ6gCF4ZmKVaXllJKI7FuzpfW7aS1y1X0+PU957bx4gJU/ODOQi3vymQcwkV6+dWEr9APG74pX3K+9xF2Wfnmz/FTtz9G03cbZO0FKh2p6HqFmnjdC4ACrPQ4Nk26SQvFqIp5YfEWTk+/00nTObARQrACcAjO9VzCfYJvSnYjCQeLJuGW3JGxzhyjkTSJ2n+Y9l2CGZvan1L4vy5aHQl7WQGRkPa1v4VLYJbvmnqjE5w9jB318RmUjFMIg6QMV8bEr2wFiAw87TFD/h3eOgJJp60sSZBewcBVLxEJCB4U=") // fill this later with the value from session.save()
+  : new StringSession("1AgAOMTQ5LjE1NC4xNjcuNDEBu1Bv6LtXADWQFNxw/YBbGu3csPoPKp29kHyd9wrM6tycfiEgn7IDTxy+g+6UgTqtS7uAKhPRdkz7frHRw8RldHePhK9sXi1Z7uKfQfFigrk5v9ayk3+wr0houFI9WA6jVP5LxQ/AZYZem3b7vvHHE9bjIIsCNvrq2knIq8COfESr42wu85/fCAlQsYUSWEUgp7Ct+d3EC+W6a78wfNBrIFiUqEZTnufbmDbQseXu2r3q1mHPnvpWnTcun2zXieBOLc2F/mSNr90HRmNBEaa/L4GZY1qX4Zn4CCbFwrAZzz1SPEOH/AblEB9Re0Xb3NirD+GGIZCsTnvWS3EYQhLK8Bo=")
+
+// const stringSession = new StringSession("");
 // const tgClient = new TelegramClient(stringSession, apiId, apiHash, {
 const tgClient = new TelegramClient(stringSession, apiId, apiHash, {
   connectionRetries: 5,
@@ -42,18 +51,18 @@ class TgController {
   connectTgClient = async () => {
     try {
 
-      await tgClient.start({
-        phoneNumber: async () => await input.text("Please enter your number: "),
-        password: async () => await input.text("Please enter your password: "),
-        phoneCode: async () =>
-          await input.text("Please enter the code you received: "),
-        onError: (err) => console.log(err),
-      });
-      console.log("You should now be connected.");
-      console.log('client.session', tgClient.session); // Save this string to avoid logging in again
-      console.log(tgClient.session.save()); // Save this string to avoid logging in again
-      await tgClient.sendMessage("me", { message: "Hello!" });
-      await tgClient.sendMessage("me", { message: "Hello! тшпук" });
+      // await tgClient.start({
+      //   phoneNumber: async () => await input.text("Please enter your number: "),
+      //   password: async () => await input.text("Please enter your password: "),
+      //   phoneCode: async () =>
+      //     await input.text("Please enter the code you received: "),
+      //   onError: (err) => console.log(err),
+      // });
+      // console.log("You should now be connected.");
+      // console.log('client.session', tgClient.session); // Save this string to avoid logging in again
+      // console.log(tgClient.session.save()); // Save this string to avoid logging in again
+      // await tgClient.sendMessage("me", { message: "Hello!" });
+      // await tgClient.sendMessage("me", { message: "Hello! тшпук" });
 
       await tgClient.connect();
       await this.startObserve();
