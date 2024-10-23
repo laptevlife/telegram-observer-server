@@ -41,7 +41,7 @@ class TgController {
   connectTgClient = async () => {
     try {
 
-      await client.start({
+      await tgClient.start({
         phoneNumber: async () => await input.text("Please enter your number: "),
         password: async () => await input.text("Please enter your password: "),
         phoneCode: async () =>
@@ -49,10 +49,10 @@ class TgController {
         onError: (err) => console.log(err),
       });
       console.log("You should now be connected.");
-      console.log('client.session', client.session); // Save this string to avoid logging in again
-      console.log(client.session.save()); // Save this string to avoid logging in again
-      await client.sendMessage("me", { message: "Hello!" });
-      await client.sendMessage("me", { message: "Hello! тшпук" });
+      console.log('client.session', tgClient.session); // Save this string to avoid logging in again
+      console.log(tgClient.session.save()); // Save this string to avoid logging in again
+      await tgClient.sendMessage("me", { message: "Hello!" });
+      await tgClient.sendMessage("me", { message: "Hello! тшпук" });
 
       await tgClient.connect();
       await this.startObserve();
